@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+        body{
+            /* height: 100vh; */
+            background-color:wheat;
+        }
+        header{
+            /* height: 650px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top:20%;
+        }
+        #task{
+            height: 30px;
+            position: relative;
+            text-align: center;
+            width: 200px;
+            background-color:aqua;
+            /* border: 2px solid aqua; */
+        }
+      #add{
+        margin-left: 4px;
+        /* margin-top: 1px; */
+        position: absolute;
+        border: 2px solid black;
+        padding: 8px;
+        background-color: aqua;
+        }
+        #add:hover{
+            background-color: blue;
+        }
+        .list{
+             text-align: center;
+        }
+        .unlist li{
+            list-style-type: none;
+        }
+        #new_list{
+            height: 30px;
+            position: relative;
+            text-align: center;
+            width: 200px;
+            background-color:aqua;
+           margin-left: 658px;
+        margin-top: 4px;
+        list-style-type: none;
+        }
+      #cancle{
+        margin-left: 869px;
+      margin-top: -30px;
+        position: absolute;
+        border: 2px solid black;
+        padding: 5px;
+        background-color: blue;
+      }
+      #cancle:hover{
+        background-color: red;
+      }
+        
+    </style>
+</head>
+<body>
+    <header>
+<form action="#" onsubmit="addlist()">
+            <input type="text" id="task" placeholder="Add task">
+            <i class="fa-sharp fa-solid fa-plus" id="add" onclick="addlist()"></i>
+        </form>
+    </header>
+    <section id="list" class="list">
+        <ul class="unlist">
+        </ul>
+    </section>
+
+   <script>
+    function addlist(){
+        let task=document.getElementById("task").value;
+        if(task.trim() == ""){
+            alert("Plese Enter The Task")
+        }
+        else{
+       let list=document.createElement("li");
+       list.innerHTML=task;
+       list.setAttribute("id","new_list")
+       document.body.appendChild(list)
+        let button=document.createElement("i");
+        button.setAttribute("class","fa-solid fa-trash-can")
+        button.setAttribute("onclick","remove()")
+        button.setAttribute("id","cancle")
+        document.body.appendChild(button)
+        }
+    }
+    function remove(){
+        let unlist=document.getElementById("new_list");
+        let button=document.getElementById("cancle");
+        unlist.remove(length,1)
+        button.remove(length,1)
+    }
+
+   </script>
+</body>
+</html>
